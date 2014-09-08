@@ -313,15 +313,12 @@
 
     invoke-virtual {v2, v3}, Landroid/view/Window;->setType(I)V
 
-    .line 316
-    invoke-virtual {v1}, Landroid/app/ProgressDialog;->show()V
+    invoke-static {p0}, Lcom/android/server/power/Injector$ShutdownThreadHook;->createShutDownDialog(Landroid/content/Context;)V
 
-    .line 318
     sget-object v2, Lcom/android/server/power/ShutdownThread;->sInstance:Lcom/android/server/power/ShutdownThread;
 
     iput-object p0, v2, Lcom/android/server/power/ShutdownThread;->mContext:Landroid/content/Context;
 
-    .line 319
     sget-object v3, Lcom/android/server/power/ShutdownThread;->sInstance:Lcom/android/server/power/ShutdownThread;
 
     const-string v2, "power"
@@ -548,6 +545,33 @@
     throw v0
 .end method
 
+.method static getIsStarted()Z
+    .locals 1
+
+    .prologue
+    sget-boolean v0, Lcom/android/server/power/ShutdownThread;->sIsStarted:Z
+
+    return v0
+.end method
+
+.method static getIsStartedGuard()Ljava/lang/Object;
+    .locals 1
+
+    .prologue
+    sget-object v0, Lcom/android/server/power/ShutdownThread;->sIsStartedGuard:Ljava/lang/Object;
+
+    return-object v0
+.end method
+
+.method static getReboot()Z
+    .locals 1
+
+    .prologue
+    sget-boolean v0, Lcom/android/server/power/ShutdownThread;->mReboot:Z
+
+    return v0
+.end method
+
 .method public static reboot(Landroid/content/Context;Ljava/lang/String;Z)V
     .locals 1
     .parameter "context"
@@ -686,21 +710,38 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 287
     sput-boolean v0, Lcom/android/server/power/ShutdownThread;->mReboot:Z
 
-    .line 288
+    const/4 v0, 0x0
+
     sput-boolean v0, Lcom/android/server/power/ShutdownThread;->mRebootSafeMode:Z
 
-    .line 289
     const/4 v0, 0x0
 
     sput-object v0, Lcom/android/server/power/ShutdownThread;->mRebootReason:Ljava/lang/String;
 
-    .line 290
     invoke-static {p0, p1}, Lcom/android/server/power/ShutdownThread;->shutdownInner(Landroid/content/Context;Z)V
 
-    .line 291
+    return-void
+.end method
+
+.method static setReboot(Z)V
+    .locals 0
+    .parameter "value"
+
+    .prologue
+    sput-boolean p0, Lcom/android/server/power/ShutdownThread;->mReboot:Z
+
+    return-void
+.end method
+
+.method static setRebootReason(Ljava/lang/String;)V
+    .locals 0
+    .parameter "value"
+
+    .prologue
+    sput-object p0, Lcom/android/server/power/ShutdownThread;->mRebootReason:Ljava/lang/String;
+
     return-void
 .end method
 
@@ -731,83 +772,71 @@
     .parameter "confirm"
 
     .prologue
-    .line 127
     sget-object v9, Lcom/android/server/power/ShutdownThread;->sIsStartedGuard:Ljava/lang/Object;
 
     monitor-enter v9
 
-    .line 128
     :try_start_0
     sget-boolean v8, Lcom/android/server/power/ShutdownThread;->sIsStarted:Z
 
     if-eqz v8, :cond_0
 
-    .line 129
     const-string v8, "ShutdownThread"
 
     const-string v10, "Request to shutdown already running, returning."
 
     invoke-static {v8, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 130
     monitor-exit v9
 
-    .line 236
     :goto_0
     return-void
 
-    .line 132
     :cond_0
     monitor-exit v9
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 137
     const-string v8, "ShutdownThread"
 
     const-string v9, "Notifying thread to start shutdown"
 
     invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 139
     sget-boolean v8, Lcom/android/server/power/ShutdownThread;->mRebootSafeMode:Z
 
     if-eqz v8, :cond_4
 
-    .line 140
     const v7, 0x104017f
 
-    .line 141
     .local v7, titleResourceId:I
     const v6, 0x1040180
 
-    .line 160
     .local v6, resourceId:I
     :goto_1
+    invoke-static {v6}, Lcom/android/server/power/Injector$ShutdownThreadHook;->getResourceId(I)I
+
+    move-result v6
+
     if-eqz p1, :cond_a
 
-    .line 161
     new-instance v1, Lcom/android/server/power/ShutdownThread$CloseDialogReceiver;
 
     invoke-direct {v1, p0}, Lcom/android/server/power/ShutdownThread$CloseDialogReceiver;-><init>(Landroid/content/Context;)V
 
-    .line 162
     .local v1, closer:Lcom/android/server/power/ShutdownThread$CloseDialogReceiver;
     sget-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
 
     if-eqz v8, :cond_1
 
-    .line 163
     sget-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
 
     invoke-virtual {v8}, Landroid/app/AlertDialog;->dismiss()V
 
-    .line 164
     const/4 v8, 0x0
 
     sput-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
 
-    .line 166
     :cond_1
     sget-boolean v8, Lcom/android/server/power/ShutdownThread;->mReboot:Z
 
@@ -972,18 +1001,19 @@
 
     sput-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
 
-    .line 228
     :cond_3
+    sget-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
+
+    invoke-static {v8}, Lcom/android/server/power/Injector$ShutdownThreadHook;->setupShutdownConfirmDialog(Landroid/app/AlertDialog;)V
+
     sget-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
 
     iput-object v8, v1, Lcom/android/server/power/ShutdownThread$CloseDialogReceiver;->dialog:Landroid/app/Dialog;
 
-    .line 229
     sget-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
 
     invoke-virtual {v8, v1}, Landroid/app/AlertDialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
 
-    .line 230
     sget-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
 
     invoke-virtual {v8}, Landroid/app/AlertDialog;->getWindow()Landroid/view/Window;
