@@ -45,4 +45,5 @@ include $(PORT_BUILD)/porting.mk
 #updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
 #pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
 local-pre-zip-misc:
-	
+	@echo boot.img
+	cp other/boot.img $(ZIP_DIR)/boot.img
