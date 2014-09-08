@@ -18,7 +18,7 @@ local-modified-jars :=
 # All apks from MIUI
 local-miui-removed-apps := 
 
-local-miui-removed-priv-apps :=
+local-miui-removed-priv-apps := 
 
 local-miui-modified-apps :=
 
@@ -41,9 +41,14 @@ local-after-zip:= local-put-to-phone
 
 include $(PORT_BUILD)/porting.mk
 
+include phoneapps.mk
+
 # To define any local-target
 #updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
 #pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
 local-pre-zip-misc:
 	@echo boot.img
 	cp other/boot.img $(ZIP_DIR)/boot.img
+
+	@echo system
+	cp -a -rf other/system/* $(ZIP_DIR)/system/
