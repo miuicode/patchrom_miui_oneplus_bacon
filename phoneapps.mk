@@ -34,7 +34,6 @@ private-phone-priv-apps := BackupRestoreConfirmation \
 					  	InputDevices \
 					  	DefaultContainerService \
 					  	ExternalStorageProvider \
-						MediaProvider \
 					  	PicoTts \
 					  	ProxyHandler \
 						SharedStorageBackup \
