@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name2">ئامرازەکانی سیمکارت 2</string>
+    <string name="app_name3">ئامرازەکانی سیمکارت 3</string>
+    <string name="default_setup_call_msg">پەیوەندی دادەمەزرێت لە…</string>
+    <string name="default_tone_dialog_msg">لێدانی زەنگ</string>
+    <string name="app_name">دەزگای سیمکارت</string>
+    <string name="menu_end_session">کۆتایی هینان بە پەیوەندیەکە</string>
+    <string name="help">یارمەتی</string>
+    <string name="menu_back">گەڕانەوە</string>
+    <string name="service_name">ناوی خزمەتگوزاری</string>
+    <string name="stk_no_service">خزمەتگوزاری لە بەردەست نیە</string>
+    <string name="button_ok">باشه‌</string>
+    <string name="button_cancel">هەڵوەشاندنەوە</string>
+    <string name="button_yes">بەڵێ</string>
+    <string name="button_no">نەخێر</string>
+    <string name="alphabet">پیتەکەن</string>
+    <string name="digits">ژمارەکان (0-9، *،+)</string>
+    <string name="default_call_setup_msg">پەیوەندیەک لە ئارادایە…</string>
+    <string name="stk_app_state">دۆخی بەنامەکە</string>
+    <string name="enable_app">چالاک</string>
+    <string name="disable_app">ناچالاککراو</string>
+    <string name="stk_dialog_title">دەزگای سیمکارت</string>
+    <string name="default_open_channel_msg">کەناڵەکە بکرێتەوە؟</string>
+    <string name="default_send_data_msg">ناردنی زانیاری</string>
+    <string name="default_receive_data_msg">وەرگرتنی زانیاری</string>
+    <string name="default_close_channel_msg">کەناڵەکە داخرا</string>
+    <string name="stk_dialog_accept">بەڵێ</string>
+    <string name="stk_dialog_reject">نەخێر</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name2">SIM මෙවලම් මල්ල 2</string>
+    <string name="app_name3">SIM මෙවලම් මල්ල 3</string>
+    <string name="default_setup_call_msg">ඇමතුම පිහිටුවමින්…</string>
+    <string name="default_tone_dialog_msg">තානය වයමින්</string>
+</resources>
