@@ -29,6 +29,8 @@ local-density := XXHDPI
 
 include phoneapps.mk
 
+PORT_PRODUCT := bacon_xs
+
 # To include the local targets before and after zip the final ZIP file, 
 # and the local-targets should:
 # (1) be defined after including porting.mk if using any global variable(see porting.mk)
