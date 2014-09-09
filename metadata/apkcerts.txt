@@ -1,4 +1,6 @@
 name="AMAPNetworkLocation.apk" certificate="PRESIGNED" private_key=""
+name="MIPop.apk" certificate="PRESIGNED" private_key=""
+name="StockSettings.apk" certificate="PRESIGNED" private_key=""
 name="CMS.apk" certificate="PRESIGNED" private_key=""
 name="Apollo.apk" certificate="PRESIGNED" private_key=""
 name="BackupRestoreConfirmation.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
