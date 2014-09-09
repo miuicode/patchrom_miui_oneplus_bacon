@@ -18,7 +18,7 @@ local-modified-jars :=
 # All apks from MIUI
 local-miui-removed-apps := 
 
-local-miui-removed-priv-apps := 
+local-miui-removed-priv-apps :=
 
 local-miui-modified-apps :=
 
@@ -28,6 +28,8 @@ local-density := XXHDPI
 
 # All apps need to be removed from original ZIP file
 #local-remove-apps   := 
+
+include phoneapps.mk
 
 # To include the local targets before and after zip the final ZIP file, 
 # and the local-targets should:
@@ -40,8 +42,6 @@ local-after-zip:= local-put-to-phone
 # deliver the zip file to phone, or to customize other actions
 
 include $(PORT_BUILD)/porting.mk
-
-include phoneapps.mk
 
 # To define any local-target
 #updater := $(ZIP_DIR)/META-INF/com/google/android/updater-script
