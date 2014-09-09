@@ -1,0 +1,121 @@
+From 806b24bd3cfa9085d3ac4558db7b7140dc3cca04 Mon Sep 17 00:00:00 2001
+From: gtbluesky <gantaobluesky@gmail.com>
+Date: Tue, 19 Aug 2014 01:56:46 +0800
+Subject: [PATCH] support lte
+
+---
+ .../smali/com/android/phone/MiuiPhoneGlobals.smali |  2 +-
+ .../MiuiPreferredNetworkTypeListPreference.smali   | 62 ++++++++++++++++++++++
+ .../android/phone/MiuiTelephonyCapabilities.smali  |  2 +-
+ 3 files changed, 64 insertions(+), 2 deletions(-)
+
+--- a/Phone/smali/com/android/phone/MiuiPhoneGlobals.smali
++++ b/Phone/smali/com/android/phone/MiuiPhoneGlobals.smali
+@@ -199,7 +199,7 @@
+     .local v0, needReset:Z
+     sget-boolean v3, Lmiui/os/Build;->IS_MIFOUR_LTE:Z
+ 
+-    if-eqz v3, :cond_2
++    #if-eqz v3, :cond_2
+ 
+     const/4 v3, 0x7
+ 
+--- a/Phone/smali/com/android/phone/MiuiPreferredNetworkTypeListPreference.smali
++++ b/Phone/smali/com/android/phone/MiuiPreferredNetworkTypeListPreference.smali
+@@ -418,6 +418,58 @@
+ 
+ 
+ # virtual methods
++.method public isChinaMobile()Z
++    .locals 4
++
++    .prologue
++    const-string v3, "phone"
++
++    invoke-virtual {p0, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
++
++    move-result-object v2
++
++    check-cast v2, Landroid/telephony/TelephonyManager;
++
++    .local v2, telManager:Landroid/telephony/TelephonyManager;
++    invoke-virtual {v2}, Landroid/telephony/TelephonyManager;->getSubscriberId()Ljava/lang/String;
++
++    move-result-object v0
++
++    .local v0, imsi:Ljava/lang/String;
++    const/4 v1, 0x0
++
++    .local v1, result:Z
++    if-eqz v0, :cond_1
++
++    const-string v3, "46000"
++
++    invoke-virtual {v0, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
++
++    move-result v3
++
++    if-nez v3, :cond_0
++
++    const-string v3, "46002"
++
++    invoke-virtual {v0, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
++
++    move-result v3
++
++    if-eqz v3, :cond_2
++
++    :cond_0
++    const/4 v1, 0x1
++
++    :cond_1
++    :goto_0
++    return v1
++
++    :cond_2
++    const/4 v1, 0x0
++
++    goto :goto_0
++.end method
++
+ .method protected onCreate(Landroid/os/Bundle;)V
+     .locals 8
+     .parameter "icicle"
+@@ -583,6 +635,10 @@
+ 
+     sget-boolean v4, Lmiui/os/Build;->IS_MIFOUR_LTE:Z
+ 
++    invoke-virtual {p0}, Lcom/android/phone/MiuiPreferredNetworkTypeListPreference;->isChinaMobile()Z
++
++    move-result v4
++
+     if-eqz v4, :cond_7
+ 
+     const v4, 0x7f06001e
+@@ -592,6 +648,12 @@
+     goto :goto_0
+ 
+     :cond_7
++    const v4, 0x7f06001f
++
++    invoke-virtual {p0, v4}, Lcom/android/phone/MiuiPreferredNetworkTypeListPreference;->addPreferencesFromResource(I)V
++
++    goto :goto_0
++
+     invoke-virtual {p0, v7}, Lcom/android/phone/MiuiPreferredNetworkTypeListPreference;->addPreferencesFromResource(I)V
+ 
+     const-string v4, "2"
+--- a/Phone/smali/com/android/phone/MiuiTelephonyCapabilities.smali
++++ b/Phone/smali/com/android/phone/MiuiTelephonyCapabilities.smali
+@@ -239,7 +239,7 @@
+ 
+     sget-boolean v0, Lmiui/os/Build;->IS_MIFOUR_LTE:Z
+ 
+-    if-eqz v0, :cond_1
++    #if-eqz v0, :cond_1
+ 
+     :cond_0
+     const/4 v0, 0x1
+-- 
+1.8.1.2
+

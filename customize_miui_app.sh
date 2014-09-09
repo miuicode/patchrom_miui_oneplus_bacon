@@ -37,5 +37,5 @@ function applyPart () {
 }
 
 if [ $1 = "Phone" ];then
-	applyPart $1 $2
+	applyPatch $1 $2
 fi
