@@ -1,0 +1,86 @@
+From 540a8e7d140f654ca11a3e7654d8398fb257fa05 Mon Sep 17 00:00:00 2001
+From: X-s <xsmumu@gmail.com>
+Date: Wed, 10 Sep 2014 21:34:32 +0800
+Subject: [PATCH] Fix Accessibility FC
+
+---
+ .../ToggleAccessibilityServicePreferenceFragment.smali   | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+--- a/Settings/smali/com/android/settings/accessibility/ToggleAccessibilityServicePreferenceFragment.smali
++++ b/Settings/smali/com/android/settings/accessibility/ToggleAccessibilityServicePreferenceFragment.smali
+@@ -160,7 +160,7 @@
+     move-result-object v6
+ 
+     .local v6, capabilityView:Landroid/view/View;
+-    const v13, 0x1020282
++    const v13, 0x1020283
+ 
+     invoke-virtual {v6, v13}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+ 
+@@ -173,7 +173,7 @@
+ 
+     move-result-object v13
+ 
+-    const v14, 0x108039c
++    const v14, 0x10803c1
+ 
+     invoke-virtual {v13, v14}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+ 
+@@ -181,7 +181,7 @@
+ 
+     invoke-virtual {v10, v13}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+ 
+-    const v13, 0x1020286
++    const v13, 0x1020287
+ 
+     invoke-virtual {v6, v13}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+ 
+@@ -200,7 +200,7 @@
+ 
+     invoke-virtual {v12, v13}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+ 
+-    const v13, 0x1020287
++    const v13, 0x1020288
+ 
+     invoke-virtual {v6, v13}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+ 
+@@ -252,7 +252,7 @@
+ 
+     move-result-object v6
+ 
+-    const v13, 0x1020282
++    const v13, 0x1020283
+ 
+     invoke-virtual {v6, v13}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+ 
+@@ -266,7 +266,7 @@
+ 
+     move-result-object v13
+ 
+-    const v14, 0x108039c
++    const v14, 0x10803c1
+ 
+     invoke-virtual {v13, v14}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+ 
+@@ -274,7 +274,7 @@
+ 
+     invoke-virtual {v10, v13}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+ 
+-    const v13, 0x1020286
++    const v13, 0x1020287
+ 
+     invoke-virtual {v6, v13}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+ 
+@@ -294,7 +294,7 @@
+ 
+     invoke-virtual {v12, v13}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+ 
+-    const v13, 0x1020287
++    const v13, 0x1020288
+ 
+     invoke-virtual {v6, v13}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+ 
+-- 
+1.9.1
+
