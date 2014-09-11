@@ -1584,7 +1584,7 @@
 
     .prologue
     .line 117
-    iget-object v0, p0, Landroid/media/AudioService;->mUiContext:Landroid/content/Context;
+    iget-object v0, p0, Landroid/media/AudioService;->mContext:Landroid/content/Context;
 
     return-object v0
 .end method
@@ -1607,7 +1607,7 @@
 
     .prologue
     .line 117
-    iput-object p1, p0, Landroid/media/AudioService;->mUiContext:Landroid/content/Context;
+    iput-object p1, p0, Landroid/media/AudioService;->mContext:Landroid/content/Context;
 
     return-object p1
 .end method
@@ -3249,7 +3249,7 @@
 
     .prologue
     .line 4483
-    iget-object v0, p0, Landroid/media/AudioService;->mUiContext:Landroid/content/Context;
+    iget-object v0, p0, Landroid/media/AudioService;->mContext:Landroid/content/Context;
 
     if-eqz v0, :cond_0
 
@@ -5653,7 +5653,7 @@
 
     .prologue
     .line 4445
-    iget-object v0, p0, Landroid/media/AudioService;->mUiContext:Landroid/content/Context;
+    iget-object v0, p0, Landroid/media/AudioService;->mContext:Landroid/content/Context;
 
     if-eqz v0, :cond_0
 
@@ -5686,7 +5686,7 @@
 
     .prologue
     .line 4426
-    iget-object v0, p0, Landroid/media/AudioService;->mUiContext:Landroid/content/Context;
+    iget-object v0, p0, Landroid/media/AudioService;->mContext:Landroid/content/Context;
 
     if-eqz v0, :cond_0
 
@@ -8484,7 +8484,7 @@
 
     .prologue
     .line 4464
-    iget-object v0, p0, Landroid/media/AudioService;->mUiContext:Landroid/content/Context;
+    iget-object v0, p0, Landroid/media/AudioService;->mContext:Landroid/content/Context;
 
     if-eqz v0, :cond_0
 
