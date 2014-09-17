@@ -46,3 +46,7 @@ if [ $1 = "Settings" ];then
 	applyPatch $1 $2
 	$XMLMERGYTOOL $1/res/values $2/res/values
 fi
+
+if [ $1 = "MiuiHome" ];then
+	$XMLMERGYTOOL $1/res/values $2/res/values
+fi
