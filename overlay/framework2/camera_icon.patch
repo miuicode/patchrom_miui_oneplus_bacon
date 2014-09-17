@@ -1,0 +1,29 @@
+From f1adf19c9b210294f8f5a7b7c06dca84fbd774df Mon Sep 17 00:00:00 2001
+From: X-s <xsmumu@gmail.com>
+Date: Wed, 17 Sep 2014 22:11:27 +0800
+Subject: [PATCH] fix camera icon
+
+---
+ framework2/smali/miui/content/res/IconCustomizer.smali | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+--- a/framework2/smali/miui/content/res/IconCustomizer.smali
++++ b/framework2/smali/miui/content/res/IconCustomizer.smali
+@@ -254,6 +254,14 @@
+ 
+     sget-object v0, Lmiui/content/res/IconCustomizer;->sIconMapping:Ljava/util/Map;
+ 
++    const-string v1, "com.cyngn.cameranext#com.android.camera.CameraLauncher.png"
++
++    const-string v2, "com.android.camera.png"
++
++    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
++
++    sget-object v0, Lmiui/content/res/IconCustomizer;->sIconMapping:Ljava/util/Map;
++
+     const-string v1, "com.htc.album.png"
+ 
+     const-string v2, "com.miui.gallery.png"
+-- 
+1.9.1
+
