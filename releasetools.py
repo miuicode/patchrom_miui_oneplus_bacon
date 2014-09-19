@@ -19,7 +19,7 @@ def AddArgsForFormatSystem(info):
   edify = info.script
   for i in xrange(len(edify.script)):
     if "format(" in edify.script[i] and "/dev/block/platform/msm_sdcc.1/by-name/system" in edify.script[i]:
-      edify.script[i] = 'format("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/system", "0", "/system");'
+      edify.script[i] = 'delete_recursive("/system");'
       return
 
 def WritePolicyConfig(info):
@@ -32,6 +32,7 @@ def WritePolicyConfig(info):
 def FullOTA_InstallEnd(info):
     WritePolicyConfig(info)
     AddArgsForSetPermission(info)
+    AddArgsForFormatSystem(info)
 
 def IncrementalOTA_InstallEnd(info):
     AddArgsForSetPermission(info)
