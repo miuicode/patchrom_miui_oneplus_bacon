@@ -22,6 +22,13 @@ def AddArgsForFormatSystem(info):
       edify.script[i] = 'delete_recursive("/system");'
       return
 
+def AddArgsForUnmountSystem(info):
+  edify = info.script
+  for i in xrange(len(edify.script)):
+    if "unmount" in edify.script[i] and "/system" in edify.script[i]:
+      edify.script[i] = 'mount("ext4", "EMMC", "/dev/block/platform/msm_sdcc.1/by-name/system", "/system");'
+      return
+
 def WritePolicyConfig(info):
   try:
     file_contexts = info.input_zip.read("META/file_contexts")
@@ -33,6 +40,7 @@ def FullOTA_InstallEnd(info):
     WritePolicyConfig(info)
     AddArgsForSetPermission(info)
     AddArgsForFormatSystem(info)
+    AddArgsForUnmountSystem(info)
 
 def IncrementalOTA_InstallEnd(info):
     AddArgsForSetPermission(info)
