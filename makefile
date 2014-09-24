@@ -16,7 +16,7 @@ local-modified-priv-apps :=
 local-modified-jars :=
 
 # All apks from MIUI
-local-miui-removed-apps :=
+local-miui-removed-apps := O2O
 
 local-miui-modified-apps := Phone Settings MiuiHome
 
