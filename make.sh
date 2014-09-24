@@ -32,7 +32,7 @@ echo "    make ota?     "
 echo "------------------"
 read
 ../tools/releasetools/ota_from_target_files -k ../build/security/testkey -i $2 out/target_files.zip OTA-$2-$1.zip
-cp out/target_files.zip $1-Target.zip
+cp out/target_files.zip $1-target.zip
 echo "******************"
 echo "*     Done!      *"
 echo "******************"
