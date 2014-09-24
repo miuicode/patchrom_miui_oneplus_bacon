@@ -1,3 +1,4 @@
+name="ota-baidushurufa_52.apk" certificate="PRESIGNED" private_key=""
 name="nubia_camera.apk" certificate="PRESIGNED" private_key=""
 name="miui_camera.apk" certificate="PRESIGNED" private_key=""
 name="cm_camera.apk" certificate="PRESIGNED" private_key=""
