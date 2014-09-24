@@ -1,19 +1,27 @@
-From f1adf19c9b210294f8f5a7b7c06dca84fbd774df Mon Sep 17 00:00:00 2001
+From 2be1242157f5bc76601dc2d3e6ce312f4c6c9748 Mon Sep 17 00:00:00 2001
 From: X-s <xsmumu@gmail.com>
-Date: Wed, 17 Sep 2014 22:11:27 +0800
-Subject: [PATCH] fix camera icon
+Date: Wed, 24 Sep 2014 19:31:43 +0800
+Subject: [PATCH] nubia camera and cm camera
 
 ---
- framework2/smali/miui/content/res/IconCustomizer.smali | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ .../smali/miui/content/res/IconCustomizer.smali          | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 --- a/framework2/smali/miui/content/res/IconCustomizer.smali
 +++ b/framework2/smali/miui/content/res/IconCustomizer.smali
-@@ -254,6 +254,14 @@
+@@ -254,6 +254,22 @@
  
      sget-object v0, Lmiui/content/res/IconCustomizer;->sIconMapping:Ljava/util/Map;
  
 +    const-string v1, "com.cyngn.cameranext#com.android.camera.CameraLauncher.png"
++
++    const-string v2, "com.android.camera.png"
++
++    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
++
++    sget-object v0, Lmiui/content/res/IconCustomizer;->sIconMapping:Ljava/util/Map;
++
++    const-string v1, "cn.nubia.camera#cn.nubia.camera.CameraLauncher.png"
 +
 +    const-string v2, "com.android.camera.png"
 +
