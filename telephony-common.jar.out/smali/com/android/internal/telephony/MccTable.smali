@@ -4096,38 +4096,26 @@
 
     invoke-static {v7, v8}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 202
     const/4 v3, 0x0
 
-    .line 203
     .local v3, locale:Ljava/util/Locale;
     if-eqz v4, :cond_2
 
-    .line 204
     invoke-static {p0, v4}, Lcom/android/internal/telephony/MccTable;->setTimezoneFromMccIfNeeded(Landroid/content/Context;I)V
 
-    .line 205
-    invoke-static {p0, v4}, Lcom/android/internal/telephony/MccTable;->getLocaleFromMcc(Landroid/content/Context;I)Ljava/util/Locale;
-
-    move-result-object v3
-
-    .line 207
     :cond_2
     if-eqz p2, :cond_3
 
-    .line 208
     invoke-static {p0, v4}, Lcom/android/internal/telephony/MccTable;->setWifiCountryCodeFromMcc(Landroid/content/Context;I)V
 
     goto :goto_0
 
-    .line 195
     .end local v3           #locale:Ljava/util/Locale;
     .end local v4           #mcc:I
     .end local v5           #mnc:I
     :catch_0
     move-exception v2
 
-    .line 196
     .local v2, e:Ljava/lang/NumberFormatException;
     const-string v7, "MccTable"
 
