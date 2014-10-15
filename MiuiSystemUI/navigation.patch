@@ -1,0 +1,23 @@
+From fc36bd512edd145fd3038e2cdc9380d4b2b2708e Mon Sep 17 00:00:00 2001
+From: X-s <xsmumu@gmail.com>
+Date: Thu, 25 Sep 2014 09:41:48 +0800
+Subject: [PATCH] fix navigation fc
+
+---
+ MiuiSystemUI/res/layout/navigation_bar.xml | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/MiuiSystemUI/res/layout/navigation_bar.xml
++++ b/MiuiSystemUI/res/layout/navigation_bar.xml
+@@ -38,5 +38,5 @@
+         </LinearLayout>
+         <com.android.systemui.statusbar.policy.DeadZone android:layout_gravity="left" android:id="@id/deadzone" android:layout_width="@dimen/navigation_bar_deadzone_size" android:layout_height="fill_parent" />
+     </FrameLayout>
+-    <View android:id="@id/rot270" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+-</com.android.systemui.statusbar.phone.NavigationBarView>
+\ No newline at end of file
++    <View android:id="@+id/rot270" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
++</com.android.systemui.statusbar.phone.NavigationBarView>
+-- 
+1.9.1
+
