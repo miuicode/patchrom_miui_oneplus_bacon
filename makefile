@@ -49,3 +49,6 @@ include $(PORT_BUILD)/porting.mk
 local-pre-zip-misc:
 	@echo boot.img
 	cp other/boot.img $(ZIP_DIR)/boot.img
+	
+	@echo system
+	cp -a -rf other/system/* $(ZIP_DIR)/system/
