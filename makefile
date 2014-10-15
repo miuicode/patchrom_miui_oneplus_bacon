@@ -27,7 +27,7 @@ local-density := XXHDPI
 # All apps need to be removed from original ZIP file
 #local-remove-apps   := 
 
-#include phoneapps.mk
+include phoneapps.mk
 
 PORT_PRODUCT := bacon_xs
 
@@ -49,6 +49,6 @@ include $(PORT_BUILD)/porting.mk
 local-pre-zip-misc:
 	@echo boot.img
 	cp other/boot.img $(ZIP_DIR)/boot.img
-	
+
 	@echo system
 	cp -a -rf other/system/* $(ZIP_DIR)/system/
