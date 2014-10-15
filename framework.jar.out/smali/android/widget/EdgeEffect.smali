@@ -4,7 +4,7 @@
 
 
 # static fields
-.field private static final EPSILON:F = 0.0010f
+.field private static final EPSILON:F = 0.001f
 
 .field private static final HELD_EDGE_SCALE_Y:F = 0.5f
 
@@ -143,18 +143,13 @@
 
     .line 139
     .local v0, res:Landroid/content/res/Resources;
-    const v1, 0x10804a5
-
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    invoke-static {p1}, Landroid/widget/Injector$EdgeEffectHook;->getOverScrollEdge(Landroid/content/Context;)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
     iput-object v1, p0, Landroid/widget/EdgeEffect;->mEdge:Landroid/graphics/drawable/Drawable;
 
-    .line 140
-    const v1, 0x10804a6
-
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    invoke-static {p1}, Landroid/widget/Injector$EdgeEffectHook;->getOverScrollGlow(Landroid/content/Context;)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 

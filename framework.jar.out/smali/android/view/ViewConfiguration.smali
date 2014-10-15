@@ -358,14 +358,17 @@
 
     iput v8, p0, Landroid/view/ViewConfiguration;->mMaximumDrawingCacheSize:I
 
-    .line 293
-    const/4 v8, 0x0
+    const/high16 v8, 0x40c0
 
     mul-float/2addr v8, v6
 
     add-float/2addr v8, v10
 
     float-to-int v8, v8
+
+    invoke-static {p1, v8}, Landroid/view/Injector$ViewConfigurationHook;->getOverscrollDistance(Landroid/content/Context;I)I
+
+    move-result v8
 
     iput v8, p0, Landroid/view/ViewConfiguration;->mOverscrollDistance:I
 
@@ -377,6 +380,10 @@
     add-float/2addr v8, v10
 
     float-to-int v8, v8
+
+    invoke-static {p1, v8}, Landroid/view/Injector$ViewConfigurationHook;->getOverflingDistance(Landroid/content/Context;I)I
+
+    move-result v8
 
     iput v8, p0, Landroid/view/ViewConfiguration;->mOverflingDistance:I
 
@@ -425,12 +432,32 @@
     goto :goto_0
 .end method
 
+.method static callConstructor(Landroid/content/Context;)Landroid/view/ViewConfiguration;
+    .locals 1
+    .parameter "context"
+
+    .prologue
+    new-instance v0, Landroid/view/ViewConfiguration;
+
+    invoke-direct {v0, p0}, Landroid/view/ViewConfiguration;-><init>(Landroid/content/Context;)V
+
+    return-object v0
+.end method
+
 .method public static get(Landroid/content/Context;)Landroid/view/ViewConfiguration;
     .locals 5
     .parameter "context"
 
     .prologue
-    .line 313
+    invoke-static {p0}, Landroid/view/Injector$ViewConfigurationHook;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_miui
+
+    return-object v0
+
+    :cond_miui
     invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
