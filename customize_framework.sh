@@ -58,7 +58,6 @@ then
     done
 
     cp -rf ../android/Editor/* $BUILD_OUT/framework/smali/android/widget/
-    cp -rf overlay/framework/smali/* $BUILD_OUT/framework/smali
 fi
 
 if [ $2 = "$BUILD_OUT/framework2" ]
@@ -75,11 +74,7 @@ then
 	        echo "rm file: $file"
 	        rm -rf "$file"
 	done
-	
-	cp overlay/framework2/camera_icon.patch $BUILD_OUT
-	cd $BUILD_OUT
-	$GIT_APPLY camera_icon.patch
-	cd ..
+
 fi
 
 if [ $2 = "$BUILD_OUT/telephony-common" ]
