@@ -667,34 +667,34 @@
 
     move-result v3
 
-    .line 1047
     .local v3, enabled:Z
     const/4 v7, 0x0
 
-    .line 1048
     .local v7, internalNetworkInterface:Ljava/net/NetworkInterface;
     if-eqz v3, :cond_1
 
-    .line 1049
+    const/4 v7, 0x0
+
+    .local v7, internalNetworkInterface:Ljava/net/NetworkInterface;
+    :try_start_miui
     invoke-static {p2}, Ljava/net/NetworkInterface;->getByName(Ljava/lang/String;)Ljava/net/NetworkInterface;
+    :try_end_miui
+    .catch Ljava/net/SocketException; {:try_start_miui .. :try_end_miui} :catch_miui
 
     move-result-object v7
 
-    .line 1050
     iget-object v8, p0, Lcom/android/server/NetworkManagementService;->mCachedAddressForNat:Ljava/util/HashMap;
 
     invoke-virtual {v8, p2, v7}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 1056
     :goto_0
+    :goto_miui
     if-nez v7, :cond_2
 
-    .line 1057
     const-string v8, "0"
 
     invoke-virtual {v1, v8}, Lcom/android/server/NativeDaemonConnector$Command;->appendArg(Ljava/lang/Object;)Lcom/android/server/NativeDaemonConnector$Command;
 
-    .line 1072
     :cond_0
     :try_start_0
     iget-object v8, p0, Lcom/android/server/NetworkManagementService;->mConnector:Lcom/android/server/NativeDaemonConnector;
@@ -703,10 +703,41 @@
     :try_end_0
     .catch Lcom/android/server/NativeDaemonConnectorException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1076
     return-void
 
-    .line 1052
+    :catch_miui
+    move-exception v2
+
+    .local v2, e:Ljava/net/SocketException;
+    const-string v8, "NetworkManagementService"
+
+    new-instance v9, Ljava/lang/StringBuilder;
+
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v10, "get interface by name error: "
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v2}, Ljava/net/SocketException;->toString()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v9
+
+    invoke-static {v8, v9}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto :goto_miui
+
+    .end local v2           #e:Ljava/net/SocketException;
     :cond_1
     iget-object v8, p0, Lcom/android/server/NetworkManagementService;->mCachedAddressForNat:Ljava/util/HashMap;
 
