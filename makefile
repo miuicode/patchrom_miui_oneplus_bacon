@@ -18,7 +18,7 @@ local-modified-jars :=
 # All apks from MIUI
 local-miui-removed-apps := O2O
 
-local-miui-modified-apps := MiuiHome MiuiSystemUI Phone
+local-miui-modified-apps := MiuiHome MiuiSystemUI Phone Settings
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
