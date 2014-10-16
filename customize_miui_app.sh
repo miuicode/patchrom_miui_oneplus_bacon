@@ -51,5 +51,6 @@ if [ $1 = "Phone" ];then
 fi
 
 if [ $1 = "Settings" ];then
+	applyPatch $1 $2
 	$XMLMERGYTOOL $1/res/values $2/res/values
 fi
