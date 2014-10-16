@@ -1,0 +1,16 @@
+--- a/Phone/res/xml/preferred_network_type_ltew.xml
++++ b/Phone/res/xml/preferred_network_type_ltew.xml
+@@ -4,7 +4,10 @@
+   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+     <miui.preference.RadioButtonPreferenceCategory android:key="network_type_list_gsm_umts">
+         <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_4g_preferred_miui" android:key="9" />
+-        <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_3g_preferred_miui" android:key="3" />
++        <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_3g_preferred_miui" android:key="0" />
++        <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_not_2g_preferred_miui" android:key="17" />
++        <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_only_4g_miui" android:key="16" />
++        <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_only_3g_miui" android:key="2" />
+         <miui.preference.RadioButtonPreference android:title="@string/preferred_network_type_pref_entries_only_2g_miui" android:key="1" />
+     </miui.preference.RadioButtonPreferenceCategory>
+-</PreferenceScreen>
+\ 文件尾没有 newline 字符
++</PreferenceScreen>
