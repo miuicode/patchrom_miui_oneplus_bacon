@@ -1,3 +1,4 @@
+name="ApplicationsProvider.apk" certificate="PRESIGNED" private_key=""
 name="AMAPNetworkLocation.apk" certificate="PRESIGNED" private_key=""
 name="ota-baidushurufa_52.apk" certificate="PRESIGNED" private_key=""
 name="AntHalService.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
