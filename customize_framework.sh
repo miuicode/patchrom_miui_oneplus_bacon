@@ -58,6 +58,7 @@ then
     done
 
     cp -rf ../android/Editor/* $BUILD_OUT/framework/smali/android/widget/
+    cp -rf overlay/framework/smali/* $BUILD_OUT/framework/smali
 fi
 
 if [ $2 = "$BUILD_OUT/framework2" ]
