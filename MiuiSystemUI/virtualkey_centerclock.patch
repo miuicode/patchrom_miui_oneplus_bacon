@@ -4,7 +4,6 @@ Date: Wed, 22 Oct 2014 18:40:48 +0800
 Subject: [PATCH] 2
 
 ---
- MiuiSystemUI/res/layout/status_bar.xml         |   5 +-
  .../res/layout/status_bar_centerclock.xml          |  43 ++++++++
  .../res/layout/status_bar_simple_centerclock.xml   |  26 +++++
  .../res/layout/super_status_bar_centerclock.xml    |   8 ++
@@ -19,22 +18,6 @@ Subject: [PATCH] 2
  create mode 100644 MiuiSystemUI/res/layout/status_bar_simple_centerclock.xml
  create mode 100644 MiuiSystemUI/res/layout/super_status_bar_centerclock.xml
 
---- a/MiuiSystemUI/res/layout/status_bar.xml
-+++ b/MiuiSystemUI/res/layout/status_bar.xml
-@@ -1,9 +1,12 @@
- <?xml version="1.0" encoding="utf-8"?>
- <com.android.systemui.statusbar.phone.PhoneStatusBarView android:id="@id/status_bar" android:background="@drawable/status_bar_background" android:focusable="true" android:fitsSystemWindows="true" android:descendantFocusability="afterDescendants"
--  xmlns:android="http://schemas.android.com/apk/res/android">
-+  xmlns:android="http://schemas.android.com/apk/res/android"
-+  xmlns:systemui="http://schemas.android.com/apk/res/com.android.systemui">
-     <FrameLayout android:id="@id/oldman_std_status_wrapper" android:layout_width="fill_parent" android:layout_height="fill_parent">
-         <com.android.systemui.TorchServiceView android:layout_gravity="top|left|center" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:foreground="#ff000000" />
-         <include layout="@layout/status_bar_simple" />
-+        <com.android.systemui.statusbar.policy.KeyButtonView android:layout_gravity="left" android:id="@id/home" android:layout_width="40.0dip" android:layout_height="fill_parent" android:src="#00000000" android:layout_alignRight="@id/recent_apps" android:contentDescription="@string/accessibility_back" systemui:keyCode="3" systemui:keyRepeat="false" />
-+        <com.android.systemui.statusbar.policy.KeyButtonView android:layout_gravity="right" android:id="@id/home" android:layout_width="40.0dip" android:layout_height="fill_parent" android:src="#00000000" android:layout_alignLeft="@id/recent_apps" android:layout_alignParentLeft="true" android:contentDescription="@string/status_bar_toggle_lock" systemui:keyCode="26" systemui:keyRepeat="false" />
-         <LinearLayout android:orientation="horizontal" android:id="@id/ticker" android:paddingLeft="6.0dip" android:animationCache="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
-             <ImageSwitcher android:id="@id/tickerIcon" android:layout_width="@dimen/status_bar_icon_size" android:layout_height="@dimen/status_bar_icon_size" android:layout_marginRight="4.0dip">
-                 <com.android.systemui.statusbar.AnimatedImageView android:layout_width="@dimen/status_bar_icon_size" android:layout_height="@dimen/status_bar_icon_size" android:scaleType="centerInside" />
 --- a/MiuiSystemUI/res/layout/status_bar_centerclock.xml
 +++ b/MiuiSystemUI/res/layout/status_bar_centerclock.xml
 @@ -0,0 +1,43 @@
@@ -126,31 +109,34 @@ Subject: [PATCH] 2
 \ No newline at end of file
 --- a/MiuiSystemUI/res/values-zh-rCN/strings.xml
 +++ b/MiuiSystemUI/res/values-zh-rCN/strings.xml
-@@ -293,4 +293,6 @@
+@@ -293,4 +293,7 @@
      <string name="screen_rotation_freeze_message">锁定屏幕为横屏模式</string>
      <string name="screen_button_disabled_message">手机屏幕下方按键功能已停用，可通过“桌面键+电源键”恢复。</string>
      <string name="screen_button_enabled_message">手机屏幕下方按键功能已恢复</string>
 +    <string name="settings_statusbar_style">状态栏风格设置</string>
 +    <string name="center_clock_title">时间居中显示</string>
++    <string name="center_clock_title_summary">开启后点击状态栏左上角返回主页，右上角锁屏</string>
  </resources>
 --- a/MiuiSystemUI/res/values-zh-rTW/strings.xml
 +++ b/MiuiSystemUI/res/values-zh-rTW/strings.xml
-@@ -35,4 +35,6 @@
+@@ -35,4 +35,7 @@
      <string name="screen_rotation_freeze_message">鎖定螢幕為橫向模式</string>
      <string name="screen_button_disabled_message">手機螢幕下方按鍵功能已停用，可通過「桌面鍵+電源鍵」恢復。</string>
      <string name="screen_button_enabled_message">手機螢幕下方按鍵功能已恢復</string>
 +    <string name="settings_statusbar_style">狀態欄風格設置</string>
 +    <string name="center_clock_title">時間居中顯示</string>
++    <string name="center_clock_title_summary">開啟後點擊狀態欄左上角返回主頁，右上角鎖屏</string>
  </resources>
 --- a/MiuiSystemUI/res/values/strings.xml
 +++ b/MiuiSystemUI/res/values/strings.xml
-@@ -320,4 +320,6 @@
+@@ -320,4 +320,7 @@
      <string name="screen_button_disabled_message">Navigation buttons disabled. To re-enable them, touch Home and the Power button simultaneously.</string>
      <string name="screen_button_enabled_message">Navigation buttons enabled.</string>
      <item type="string" name="APKTOOL_DUMMY_013b">false</item>
 -</resources>
 +    <string name="settings_statusbar_style">Statusbar Style Settings</string>
 +    <string name="center_clock_title">Centered Clock</string>
++    <string name="center_clock_title_summary">After the opening of the upper left corner to return home, the upper right corner of the status bar lock screen</string>
 + </resources>
 --- a/MiuiSystemUI/res/xml/style_settings.xml
 +++ b/MiuiSystemUI/res/xml/style_settings.xml
@@ -159,7 +145,7 @@ Subject: [PATCH] 2
          </PreferenceScreen>
      </PreferenceCategory>
 +    <PreferenceCategory android:title="@string/settings_statusbar_style">
-+        <CheckBoxPreference android:persistent="false" android:title="@string/center_clock_title" android:key="center_clock" />
++        <CheckBoxPreference android:persistent="false" android:title="@string/center_clock_title" android:key="center_clock" android:summary="@string/center_clock_title_summary" />
 +    </PreferenceCategory>
  </PreferenceScreen>
 \ No newline at end of file
