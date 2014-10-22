@@ -33,6 +33,9 @@ echo "    make ota?     "
 echo "------------------"
 read
 ../tools/releasetools/ota_from_target_files -k ../build/security/testkey -i $3 out/target_files.zip OTA-$3-$2.zip
+echo "******************"
+echo "*Copy  Target.zip*"
+echo "******************"
 cp out/target_files.zip $2-target.zip
 echo "******************"
 echo "*     Done!      *"
