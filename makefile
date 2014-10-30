@@ -9,7 +9,7 @@ local-zip-file     := stockrom.zip
 local-out-zip-file := MIUI_Bacon.zip
 
 # All apps from original ZIP, but has smali files chanded
-local-modified-apps := Stk
+local-modified-apps :=
 
 local-modified-priv-apps :=
 

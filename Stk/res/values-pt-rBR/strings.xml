@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name2">Ferramentas SIM 2</string>
-    <string name="app_name3">Ferramentas SIM 3</string>
-    <string name="default_setup_call_msg">Chamada está sendo configurada…</string>
-    <string name="default_tone_dialog_msg">Tocando Tom</string>
-</resources>
