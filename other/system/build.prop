@@ -19,8 +19,8 @@ ro.product.board=MSM8974
 ro.product.cpu.abi=armeabi-v7a
 ro.product.cpu.abi2=armeabi
 ro.product.manufacturer=OnePlus
-ro.product.locale.language=en
-ro.product.locale.region=US
+ro.product.locale.language=zh
+ro.product.locale.region=CN
 ro.wifi.channels=
 ro.board.platform=msm8974
 # ro.build.product is obsolete; use ro.product.device
@@ -60,9 +60,6 @@ ro.gps.agps_provider=1
 # cabl is handled by the panel
 ro.qualcomm.cabl=0
 
-# call ring
-ro.telephony.call_ring.multiple=false
-
 #
 # ADDITIONAL_BUILD_PROPERTIES
 #
@@ -79,7 +76,7 @@ audio.offload.buffer.size.kb=32
 av.offload.enable=true
 av.streaming.offload.enable=true
 use.voice.path.for.pcm.voip=true
-audio.offload.multiple.enabled=true
+audio.offload.multiple.enabled=false
 audio.offload.gapless.enabled=true
 qcom.hw.aac.encoder=true
 tunnel.audio.encode=true
@@ -98,6 +95,7 @@ telephony.lteOnGsmDevice=1
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=15
 ro.qualcomm.perf.cores_online=2
+ro.telephony.call_ring.multiple=0
 dalvik.vm.heapstartsize=16m
 dalvik.vm.heapgrowthlimit=192m
 dalvik.vm.heapsize=512m
